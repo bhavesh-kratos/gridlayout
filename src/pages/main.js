@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import Grid from '../components/grids';
-import { Responsive, WidthProvider } from 'react-grid-layout';
+import RGL,{ Responsive, WidthProvider } from 'react-grid-layout';
 import { addArrayToData } from '../actions/routines';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -15,11 +15,11 @@ let layout = [
     { i: 'c', x: 4, y: 0, w: 1, h: 2 },
     { i: 'd', x: 4, y: 0, w: 1, h: 2 },
 ];
-class Main extends Component {
+class Main extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            inputval: '', layout: layout, newCounter: 0
+            inputval: '', layout: layout, newCounter: 0, draggable: null
         };
         this.setInput = this.setInput.bind(this);
         this.addToMainData = this.addToMainData.bind(this);
@@ -133,8 +133,8 @@ class Main extends Component {
                 <br />
                 {/* <div>something</div> */}
                 {/* <Layout onLayoutChange={this.onLayoutChange}></div> */}
-                <ResponsiveReactGridLayout draggableHandle=".doesnt-exist" className="layout" layout={layouts} isResizable={true} onLayoutChange={this.onLayoutChange}
-                    breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+                <ResponsiveReactGridLayout draggableHandle={this.state.draggable} className="layout" layout={layouts} isResizable={true} onLayoutChange={this.onLayoutChange}
+                    breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }} isDraggable={false}
                     cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}>
                     {_.map(this.state.layout, el => this.createElement(el))}
 
