@@ -1,3 +1,7 @@
+/*
+THIS IS NOT IN USE ONLY USED FOR TESTING
+*/
+
 import React from "react";
 import { WidthProvider, Responsive } from "react-grid-layout";
 import _ from "lodash";
@@ -29,14 +33,24 @@ class AddRemoveLayout extends React.PureComponent {
             }),
             newCounter: 0,
             layout: [],
-            draggable: true
+            draggable: true,
+            showModal: false
         };
 
         this.onAddItem = this.onAddItem.bind(this);
         this.onBreakpointChange = this.onBreakpointChange.bind(this);
         this.onLayoutChange = this.onLayoutChange.bind(this);
-    }
-
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+  
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
+  
+  handleCloseModal () {
+    this.setState({ showModal: false });
+  }
     createElement(el) {
         const removeStyle = {
             position: "absolute",

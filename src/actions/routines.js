@@ -7,3 +7,11 @@ export const addArrayToData = (data) => {
     console.log('at action', data)
     return { 'type': actionTypes.ADD_ARRAY_TO_DATA, 'payload': data }
 };
+
+/*
+data: {'item-name': 'operation-name'}, sets opertion for particular item
+*/
+export const addItemOperation = (data) => {
+    console.log('at operation action', data)
+    return { 'type': actionTypes.ITEMS_OPERATION, 'payload': data }
+};
